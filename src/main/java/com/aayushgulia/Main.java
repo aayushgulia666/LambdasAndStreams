@@ -1,6 +1,7 @@
 package com.aayushgulia;
 
 import java.util.Random;
+import java.util.function.IntBinaryOperator;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,12 +19,24 @@ public class Main {
         Greeting greeting2 = () -> System.out.println("Hello world using lambda!");
         greeting2.sayHello();
 
+        /*
+         * Using calculator interface, java have some pre-defined Functional Interfaces in java.util.function package
+         */
+
         Calculator calculator = (int x, int y) -> {
             Random random = new Random();
             int randomNumber = random.nextInt(30);
             return x * y + randomNumber;
         };
 
-        System.out.println(calculator.calculate(2, 4));
+        // using pre-defined function
+
+        IntBinaryOperator calculate = (int x, int y) -> {
+            Random random = new Random();
+            int randomNumber = random.nextInt(30);
+            return x * y + randomNumber;
+        };
+
+        System.out.println(calculate.applyAsInt(12, 45));
     }
 }
